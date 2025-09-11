@@ -1,90 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Prasham Shah | Portfolio</title>
-  <meta name="description" content="Portfolio of Prasham Shah — Data, Analytics, ML, Business Intelligence" />
+  <meta name="description" content="Portfolio of Prasham Shah — Data, Analytics, Machine Learning, Business Intelligence"/>
   <style>
     :root{
-      /* Light theme only */
-      --bg:#f6f1e8; /* beige */
-      --fg:#0f172a; 
-      --muted:#475569; 
-      --card:#ffffff; 
-      --border:#e2e8f0; 
-      --accent:#1f4ed8; 
-      --accent-2:#0a7a57; 
-      --chip:#eef2f7; 
-      --chip-fg:#0f172a; 
-      --shadow:0 10px 24px rgba(2,6,23,.06), 0 1px 3px rgba(2,6,23,.06);
-      --bg-graphic: radial-gradient(ellipse at 15% -10%, #fff7df, transparent 45%),
-                    radial-gradient(ellipse at 85% 0%, #fff, transparent 45%),
-                    radial-gradient(ellipse at 50% 120%, #fde7c6, transparent 45%);
+      --bg:#f6f1e8;
+      --fg:#0f172a;
+      --muted:#475569;
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --accent:#1f4ed8;
+      --accent2:#0a7a57;
+      --chip:#eef2f7;
+      --chipfg:#0f172a;
+      --shadow:0 10px 24px rgba(2,6,23,.06),0 1px 3px rgba(2,6,23,.06);
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    body::before{content:"";position:fixed;inset:0;background:var(--bg-graphic);opacity:.9;pointer-events:none;z-index:-1}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1120px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
     nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
     .brand{font-weight:900;letter-spacing:.3px;font-size:20px}
     .navlinks{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .navlinks a{padding:8px 12px;border-radius:10px}
     .navlinks a:hover{background:var(--card)}
     .cta{display:flex;gap:10px}
-
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:36px 0}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#fff;box-shadow:var(--shadow);color:var(--fg)}
+    .btn.primary{border-color:transparent;background:linear-gradient(180deg,#3b82f6,#2563eb);color:#fff}
+    section{padding:28px 0}
+    h2{font-size:26px;margin:0 0 14px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:14px}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:960px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+    .hero{display:grid;grid-template-columns:0.95fr 1.05fr;gap:28px;align-items:center;padding:36px 0}
+    .photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff}
     .eyebrow{display:inline-block;margin-bottom:8px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;color:#334155;font-size:12px}
     .hero h1{font-size:38px;line-height:1.2;margin:0}
     .hero p{color:var(--muted);margin:10px 0 18px}
-    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#ffffff;box-shadow:var(--shadow);color:var(--fg)}
-    .btn.primary{border-color:transparent;background:linear-gradient(180deg,#3b82f6,#2563eb);color:#fff}
-    .btn + .btn{margin-left:10px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-    section{padding:28px 0}
-    h2{font-size:26px;margin:0 0 14px}
-
-    .grid{display:grid;gap:14px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .grid.cols-2-lean{grid-template-columns:1.2fr .8fr}
-    @media(max-width:960px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:repeat(2,1fr)}.grid.cols-2-lean{grid-template-columns:1fr}}
-    @media(max-width:620px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
-
     .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .chip{font-size:12px;background:var(--chip);color:var(--chip-fg);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
-    .muted{color:var(--muted)}
-    .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .kv{display:grid;grid-template-columns:180px 1fr;gap:12px}
-    .kv div{padding:10px 12px;border-bottom:1px dashed var(--border)}
-
-    /* Metric highlights */
+    .chip{font-size:12px;background:var(--chip);color:var(--chipfg);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
     .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    @media(max-width:860px){.metrics{grid-template-columns:1fr 1fr}}
-    @media(max-width:560px){.metrics{grid-template-columns:1fr}}
+    @media(max-width:860px){.metrics{grid-template-columns:1fr}}
     .metric{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
-    .metric .num{font-weight:800;font-size:22px}
+    .metric .num{font-weight:800;font-size:18px;margin-bottom:4px}
     .metric .cap{font-size:13px;color:var(--muted)}
-
-    /* Lists and cards */
     ul{margin:8px 0 0 18px}
-
-    /* Project + case study cards (text-only) */
     .list-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media(max-width:900px){.list-cards{grid-template-columns:1fr}}
     .tcard{display:block;padding:16px;border-radius:14px;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
     .tcard:hover{border-color:var(--accent)}
     .tcard h3{margin:0 0 6px;font-size:18px}
     .tcard p{margin:6px 0 0;color:var(--muted)}
-
     .filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 6px}
     .filterbar button{padding:6px 10px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg);cursor:pointer}
     .filterbar button.active{background:var(--accent);border-color:transparent;color:#fff}
-
-    footer{padding:40px 0;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
   </style>
 </head>
 <body>
@@ -110,31 +86,36 @@
   </header>
 
   <main class="container">
-    <!-- About + Fast Facts side by side -->
-    <section class="hero">
+    <section class="hero" id="about">
+      <div>
+        <img src="assets/headshot.jpg" alt="Prasham Shah" class="photo"/>
+      </div>
       <div>
         <span class="eyebrow">Data • Analytics • Machine Learning</span>
         <h1>Data scientist and analyst focused on measurable business impact</h1>
         <p>I turn raw data into decisions. I build clean pipelines, intuitive dashboards, and reliable ML models that leaders trust.</p>
-        <div class="row">
+        <div class="chips">
+          <span class="chip">MSIS @ UMD</span>
+          <span class="chip">Employee of the Year</span>
+          <span class="chip">Python • SQL • ML</span>
+        </div>
+        <div class="chips" style="margin-top:10px">
           <a class="btn primary" href="https://github.com/prasham2712" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="mailto:shahprasham2727@gmail.com">Email</a>
           <a class="btn" href="https://www.linkedin.com/in/prasham-shah-27122712271227122712/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <div class="card">
-        <h2>Highlights</h2>
-        <div class="metrics">
-          <div class="metric"><div class="num">1M+ / mo</div><div class="cap">records automated via SQL/Python pipelines</div></div>
-          <div class="metric"><div class="num">20% ↓</div><div class="cap">manual reporting time after KPI dashboards</div></div>
-          <div class="metric"><div class="num">15% ↓</div><div class="cap">reporting errors from process automation</div></div>
-          <div class="metric"><div class="num">Employee of the Year</div><div class="cap">UMD Recwell — leadership & performance</div></div>
-          <div class="metric"><div class="num">Tools</div><div class="cap">Python, SQL, Power BI, Tableau, Excel</div></div>
-        </div>
+    </section>
+
+    <section>
+      <h2>Fast Facts</h2>
+      <div class="metrics">
+        <div class="metric"><div class="num">Employee of the Year</div><div class="cap">UMD Recwell — leadership and performance</div></div>
+        <div class="metric"><div class="num">Core Tools</div><div class="cap">Python, SQL, Tableau, Power BI, Excel, R, ML</div></div>
+        <div class="metric"><div class="num">2nd Rank</div><div class="cap">University project management simulation</div></div>
       </div>
     </section>
 
-    <!-- Education next -->
     <section id="education">
       <h2>Education</h2>
       <div class="grid cols-2">
@@ -149,7 +130,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
       <div class="grid cols-3">
@@ -160,8 +140,8 @@
         </div>
         <div class="card">
           <h3>Machine Learning & AI</h3>
-          <p class="muted">scikit‑learn, TensorFlow, PyTorch, XGBoost, LightGBM, Deep Learning (CNNs, LSTMs), Time‑Series Forecasting, NLP (Hugging Face, spaCy, BERT, GPT, LangChain, OpenAI API)</p>
-          <div class="chips"><span class="chip">Modeling</span><span class="chip">MLOps‑lite</span><span class="chip">NLP</span></div>
+          <p class="muted">scikit-learn, TensorFlow, PyTorch, XGBoost, LightGBM, Deep Learning (CNNs, LSTMs), Time-Series Forecasting, NLP (Hugging Face, spaCy, BERT, GPT, LangChain, OpenAI API)</p>
+          <div class="chips"><span class="chip">Modeling</span><span class="chip">NLP</span><span class="chip">Time-series</span></div>
         </div>
         <div class="card">
           <h3>Databases & Platforms</h3>
@@ -171,17 +151,16 @@
       </div>
     </section>
 
-    <!-- Experience with expanded details and added Mobioxy -->
     <section id="experience">
       <h2>Experience</h2>
       <div class="grid cols-2">
         <div class="card">
-          <h3>Business Intelligence Analyst — I‑Infotechsys</h3>
+          <h3>Business Intelligence Analyst — I-Infotechsys</h3>
           <p class="muted">Aug 2022 – Apr 2024</p>
           <ul>
             <li>Automated pipelines with SQL/Python for 1M+ records/month; reduced reporting errors by 15%.</li>
             <li>Built KPI dashboards in Tableau/Power BI; cut manual reporting time by 20% and improved decision cadence.</li>
-            <li>Integrated SAP/ERP data; delivered real‑time feeds for finance and operations leadership.</li>
+            <li>Integrated SAP/ERP data; delivered real-time feeds for finance and operations leadership.</li>
           </ul>
         </div>
         <div class="card">
@@ -196,14 +175,13 @@
           <h3>Product Analytics Intern — Mobioxy</h3>
           <p class="muted">Aug 2021 – Dec 2021 • Ahmedabad, India</p>
           <ul>
-            <li>Investigated user behavior using SQL and Excel; identified 5 drop‑off points that informed UX redesign and increased feature engagement.</li>
+            <li>Investigated user behavior using SQL and Excel; identified five drop-off points that informed UX redesign and increased feature engagement.</li>
             <li>Ran visual EDA in R to evaluate gaming app trends and client feedback, supporting prioritization across two iterations.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Projects: text-only cards, links to repos/artifacts -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="filterbar">
@@ -214,81 +192,78 @@
       </div>
       <div class="list-cards" id="projectGrid">
         <a class="tcard project" href="https://github.com/prasham2712/ResumeAI" target="_blank" rel="noopener" data-tags="app ml">
-          <h3>LLM‑Based Resume Analyzer</h3>
-          <p>GenAI app that parses resumes and matches to JDs; streamlined screening workflow.</p>
+          <h3>LLM-Based Resume Analyzer</h3>
+          <p>End-to-end GenAI tool that parses resumes, matches them to job descriptions, and scores alignment. Built with Streamlit and modern LLM tooling to speed candidate screening and reduce manual effort.</p>
         </a>
         <a class="tcard project" href="https://github.com/prasham2712/Flight-Delay-Prediction-with-Real-Time-Weather-Data" target="_blank" rel="noopener" data-tags="app ml">
           <h3>Flight Delay Prediction</h3>
-          <p>Streaming pipeline + ML models for delay risk using flight + weather data.</p>
+          <p>Streaming pipeline combining flight and weather feeds with ML models for delay risk scoring. Designed for scale with robust feature engineering and clear operational metrics.</p>
         </a>
         <a class="tcard project" href="https://github.com/prasham2712/NYC_311_Complaint_Analyzer" target="_blank" rel="noopener" data-tags="bi app">
           <h3>NYC 311 Complaint Analyzer</h3>
-          <p>Interactive analytics app with geospatial views and trend insights.</p>
+          <p>Interactive analytics app that explores trends and locations of service requests. Geospatial views and filters help surface hotspots and seasonal patterns for city operations.</p>
         </a>
         <a class="tcard project" href="HotelBookingCancellationAnalysis.pdf" target="_blank" rel="noopener" data-tags="ml">
           <h3>Predicting Hotel Booking Cancellations</h3>
-          <p>Classification models to flag likely cancellations; identified key drivers.</p>
+          <p>Classification models with Random Forest and XGBoost to flag likely cancellations. Identified drivers like lead time and deposit type to guide pricing and retention strategies.</p>
         </a>
         <a class="tcard project" href="Air_Quality_Forecasting.pdf" target="_blank" rel="noopener" data-tags="ml">
           <h3>Air Quality Forecasting</h3>
-          <p>Random‑forest regression to estimate AQI from country‑level features.</p>
+          <p>Regression modeling to estimate AQI from country-level features. Feature engineering and model comparison led to strong fit and practical forecasting insights.</p>
         </a>
         <a class="tcard project" href="python+sql_ecommerce.ipynb" target="_blank" rel="noopener" data-tags="bi app">
-          <h3>E‑commerce Analytics (Python + SQL)</h3>
-          <p>CSV→SQL pipeline with retention, YOY growth, and window functions.</p>
+          <h3>E-commerce Analytics (Python + SQL)</h3>
+          <p>CSV-to-SQL pipeline powering KPIs, retention cohorts, YOY growth, and window functions. Supports decision-making for product and marketing teams.</p>
         </a>
         <a class="tcard project" href="Shah_Prasham_BUDT%20Individual_Project_3_Hive.pdf" target="_blank" rel="noopener" data-tags="bi app">
           <h3>Big Data & Cloud Labs</h3>
-          <p>Pig, Hive, and Spark SQL exercises on retail/logistics data.</p>
+          <p>Pig, Hive, and Spark SQL exercises on retail and logistics datasets. ETL, joins, and aggregations demonstrate hands-on big-data skills.</p>
         </a>
         <a class="tcard project" href="SectionC_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
           <h3>Predictive Maintenance</h3>
-          <p>Failure prediction from sensor data with tree‑based models.</p>
+          <p>Failure prediction from sensor data using tree-based models and feature engineering. Focus on recall and practical thresholds for industrial settings.</p>
         </a>
         <a class="tcard project" href="SectionB_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
           <h3>Employee Promotion Prediction</h3>
-          <p>HR analytics to identify promotion candidates; interpretable features.</p>
+          <p>HR analytics to forecast promotion outcomes with interpretable features. Compared logistic regression with tree-based models for accuracy and clarity.</p>
         </a>
         <a class="tcard project" href="SectionA_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
           <h3>Car Price Prediction</h3>
-          <p>Robust regression with preprocessing to estimate used‑car prices.</p>
+          <p>Regression with encoding and scaling to estimate used-car prices. Benchmarked models for R² and RMSE to balance accuracy and robustness.</p>
         </a>
         <a class="tcard project" href="sectiona&b.pdf" target="_blank" rel="noopener" data-tags="bi app">
           <h3>eCommerce with MongoDB & Neo4j</h3>
-          <p>Document + graph models for orders, products, and relationships.</p>
+          <p>Document and graph models for orders, products, and relationships. Complex filters and Cypher patterns reveal cross-sell and referral dynamics.</p>
         </a>
       </div>
     </section>
 
-    <!-- Project Management: text-only cards -->
     <section id="pm">
       <h2>Project Management</h2>
       <div class="list-cards">
         <a class="tcard" href="ProjectManagementGame_SimGuide.pdf" target="_blank" rel="noopener">
           <h3>Campus PM Simulation — 2nd Place</h3>
-          <p>10‑period resource and schedule trade‑offs; finished 2nd overall on cost, time, and quality.</p>
+          <p>Ten-period simulation balancing scope, schedule, and resources. Finished 2nd overall on cost, time, and quality metrics.</p>
         </a>
         <a class="tcard" href="annotated-Team3_DeliveryCorps%20AMP%20-3.pdf" target="_blank" rel="noopener">
           <h3>DeliveryCorps Modernization Plan</h3>
-          <p>End‑to‑end plan across IT/data, DC siting, fleet upgrades, and market expansion with KPIs.</p>
+          <p>Comprehensive plan across IT and data modernization, DC siting, fleet upgrades, and market expansion with measurable KPIs.</p>
         </a>
       </div>
     </section>
 
-    <!-- Case Studies: titles only -->
     <section id="case-studies">
       <h2>Case Studies</h2>
       <div class="list-cards">
-        <a class="tcard" href="Mastercard%20Case%20Study.pdf" target="_blank" rel="noopener"><h3>Mastercard — Ethical AI Governance</h3><p>Governance frameworks enabling responsible innovation and trust.</p></a>
-        <a class="tcard" href="McCormick_Case_Study.pdf" target="_blank" rel="noopener"><h3>McCormick & Co. — AI in Flavor Innovation</h3><p>Digitizing flavor data and accelerating product development with AI.</p></a>
-        <a class="tcard" href="Coda%20Coffee.pdf" target="_blank" rel="noopener"><h3>Coda Coffee — Blockchain Transparency</h3><p>Traceability from bean to cup using blockchain + IoT.</p></a>
-        <a class="tcard" href="RFID%20at%20the%20METRO%20Group.pdf" target="_blank" rel="noopener"><h3>RFID at METRO Group</h3><p>Costs, benefits, and operations of pallet vs case‑level tagging.</p></a>
+        <a class="tcard" href="Mastercard%20Case%20Study.pdf" target="_blank" rel="noopener"><h3>Mastercard — Ethical AI Governance</h3><p>How governance frameworks enable responsible innovation and trust.</p></a>
+        <a class="tcard" href="McCormick_Case_Study.pdf" target="_blank" rel="noopener"><h3>McCormick & Co. — AI in Flavor Innovation</h3><p>Digitizing flavor data and accelerating development with AI.</p></a>
+        <a class="tcard" href="Coda%20Coffee.pdf" target="_blank" rel="noopener"><h3>Coda Coffee — Blockchain Transparency</h3><p>Traceability from bean to cup with blockchain and IoT.</p></a>
+        <a class="tcard" href="RFID%20at%20the%20METRO%20Group.pdf" target="_blank" rel="noopener"><h3>RFID at METRO Group</h3><p>Pallet vs case-level tagging trade-offs for cost and ops.</p></a>
         <a class="tcard" href="Kodak%20Case%20Write-up.pdf" target="_blank" rel="noopener"><h3>Kodak and the Digital Revolution</h3><p>Strategy lessons from a late pivot to digital.</p></a>
-        <a class="tcard" href="ebay%20Case%20Study.pdf" target="_blank" rel="noopener"><h3>eBay — Affiliate Networks</h3><p>Network effects and build‑vs‑buy for affiliate platforms.</p></a>
+        <a class="tcard" href="ebay%20Case%20Study.pdf" target="_blank" rel="noopener"><h3>eBay — Affiliate Networks</h3><p>Network effects and the build-vs-buy decision.</p></a>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
@@ -297,30 +272,24 @@
         <p>GitHub: <a href="https://github.com/prasham2712" target="_blank" rel="noopener">prasham2712</a></p>
       </div>
     </section>
-
-    <footer>
-      <div class="container">© <span id="year"></span> Prasham Shah. All rights reserved.</div>
-    </footer>
   </main>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple filter for project tags
-    const buttons = document.querySelectorAll('.filterbar button');
-    const cards = document.querySelectorAll('#projectGrid .project');
-    buttons.forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        buttons.forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        cards.forEach(c=>{
-          const tags = c.dataset.tags || '';
-          c.style.display = (f==='all' || tags.includes(f)) ? 'block' : 'none';
-        })
-      })
-    })
+    document.addEventListener('DOMContentLoaded',function(){
+      const buttons=document.querySelectorAll('.filterbar button');
+      const cards=document.querySelectorAll('#projectGrid .project');
+      buttons.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          buttons.forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          const f=btn.dataset.filter;
+          cards.forEach(c=>{
+            const tags=c.dataset.tags||'';
+            c.style.display=(f==='all'||tags.includes(f))?'block':'none';
+          });
+        });
+      });
+    });
   </script>
 </body>
 </html>
