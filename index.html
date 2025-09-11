@@ -7,19 +7,20 @@
   <meta name="description" content="Portfolio of Prasham Shah — Data, Analytics, ML, Business Intelligence" />
   <style>
     :root{
-      /* Light theme (default) */
-      --bg:#f8fafc; --fg:#0f172a; --muted:#475569; --card:#ffffff; --border:#e2e8f0; --accent:#2563eb; --accent-2:#059669;
-      --chip:#eef2f7; --chip-fg:#0f172a; --shadow:0 10px 24px rgba(2,6,23,.06), 0 1px 3px rgba(2,6,23,.06);
-      --bg-graphic: radial-gradient(ellipse at 20% 10%, #e8f0ff, transparent 45%),
-                    radial-gradient(ellipse at 80% 0%, #eafcf4, transparent 45%),
-                    radial-gradient(ellipse at 50% 120%, #fdeed7, transparent 45%);
-    }
-    [data-theme="dark"]{
-      --bg:#0b0d10; --fg:#e7edf5; --muted:#a8b3c2; --card:#12151a; --border:#202632; --accent:#6aa9ff; --accent-2:#86efac;
-      --chip:#1b212a; --chip-fg:#d7e2f1; --shadow:none;
-      --bg-graphic: radial-gradient(ellipse at 20% 10%, #0f172a, transparent 45%),
-                    radial-gradient(ellipse at 80% 0%, #0b3b2e, transparent 45%),
-                    radial-gradient(ellipse at 50% 120%, #331b00, transparent 45%);
+      /* Light theme only */
+      --bg:#f6f1e8; /* beige */
+      --fg:#0f172a; 
+      --muted:#475569; 
+      --card:#ffffff; 
+      --border:#e2e8f0; 
+      --accent:#1f4ed8; 
+      --accent-2:#0a7a57; 
+      --chip:#eef2f7; 
+      --chip-fg:#0f172a; 
+      --shadow:0 10px 24px rgba(2,6,23,.06), 0 1px 3px rgba(2,6,23,.06);
+      --bg-graphic: radial-gradient(ellipse at 15% -10%, #fff7df, transparent 45%),
+                    radial-gradient(ellipse at 85% 0%, #fff, transparent 45%),
+                    radial-gradient(ellipse at 50% 120%, #fde7c6, transparent 45%);
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
@@ -27,61 +28,63 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1120px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
-    [data-theme="dark"] header{background:rgba(11,13,16,.65)}
+    header{position:sticky;top:0;background:rgba(255,255,255,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
     nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    nav .brand{font-weight:800;letter-spacing:.3px}
-    nav .links{display:flex;gap:16px;flex-wrap:wrap}
-    nav .links a{padding:8px 10px;border-radius:10px}
-    nav .links a:hover{background:var(--card)}
-    .theme-toggle{display:flex;align-items:center;gap:8px}
-    .toggle{appearance:none;position:relative;width:48px;height:28px;border-radius:999px;background:#cbd5e1;border:1px solid var(--border);cursor:pointer;outline:none}
-    .toggle:checked{background:#1f2937}
-    .toggle::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s ease}
-    .toggle:checked::after{transform:translateX(20px)}
+    .brand{font-weight:900;letter-spacing:.3px;font-size:20px}
+    .navlinks{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .navlinks a{padding:8px 12px;border-radius:10px}
+    .navlinks a:hover{background:var(--card)}
+    .cta{display:flex;gap:10px}
 
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;padding:40px 0}
-    .hero h1{font-size:40px;line-height:1.2;margin:0}
-    .hero p{color:var(--muted);margin:10px 0 22px}
-    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,#ffffff,#f3f6fb);box-shadow:var(--shadow);color:var(--fg)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:36px 0}
+    .eyebrow{display:inline-block;margin-bottom:8px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;color:#334155;font-size:12px}
+    .hero h1{font-size:38px;line-height:1.2;margin:0}
+    .hero p{color:var(--muted);margin:10px 0 18px}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#ffffff;box-shadow:var(--shadow);color:var(--fg)}
     .btn.primary{border-color:transparent;background:linear-gradient(180deg,#3b82f6,#2563eb);color:#fff}
     .btn + .btn{margin-left:10px}
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
     section{padding:28px 0}
     h2{font-size:26px;margin:0 0 14px}
+
     .grid{display:grid;gap:14px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    @media(max-width:960px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+    .grid.cols-2-lean{grid-template-columns:1.2fr .8fr}
+    @media(max-width:960px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:repeat(2,1fr)}.grid.cols-2-lean{grid-template-columns:1fr}}
     @media(max-width:620px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+
     .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .chip{font-size:12px;background:var(--chip);color:var(--chip-fg);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
     .muted{color:var(--muted)}
     .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
     .kv{display:grid;grid-template-columns:180px 1fr;gap:12px}
     .kv div{padding:10px 12px;border-bottom:1px dashed var(--border)}
-    .project{display:flex;gap:16px}
-    .project img{width:120px;height:80px;object-fit:cover;border-radius:10px;border:1px solid var(--border)}
-    .project .meta{flex:1}
-    .project .meta h3{margin:0;font-size:18px}
-    .project .meta p{margin:6px 0;color:var(--muted)}
-    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-    .tag{font-size:12px;padding:5px 8px;border:1px solid var(--border);border-radius:8px;background:#f8fafc}
-    [data-theme="dark"] .tag{background:#0f1319}
-    .pill{display:inline-block;background:rgba(5,150,105,.12);border:1px solid rgba(5,150,105,.35);color:var(--accent-2);padding:4px 8px;border-radius:999px;font-size:12px}
-    footer{padding:40px 0;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
-    .resume-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    @media(max-width:860px){.resume-cards{grid-template-columns:1fr}}
-    .resume-card h3{margin:0 0 6px}
-    .resume-card .where{font-size:13px;color:var(--muted)}
+
+    /* Metric highlights */
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:860px){.metrics{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.metrics{grid-template-columns:1fr}}
+    .metric{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+    .metric .num{font-weight:800;font-size:22px}
+    .metric .cap{font-size:13px;color:var(--muted)}
+
+    /* Lists and cards */
+    ul{margin:8px 0 0 18px}
+
+    /* Project + case study cards (text-only) */
+    .list-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:900px){.list-cards{grid-template-columns:1fr}}
+    .tcard{display:block;padding:16px;border-radius:14px;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
+    .tcard:hover{border-color:var(--accent)}
+    .tcard h3{margin:0 0 6px;font-size:18px}
+    .tcard p{margin:6px 0 0;color:var(--muted)}
+
     .filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 6px}
     .filterbar button{padding:6px 10px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg);cursor:pointer}
-    [data-theme="dark"] .filterbar button{background:#0f1319}
     .filterbar button.active{background:var(--accent);border-color:transparent;color:#fff}
-    ul{margin:8px 0 0 18px}
-    .project-link{display:flex;gap:16px;text-decoration:none;color:inherit}
-    .project-link:hover{border-color:var(--accent)}
-    .project{cursor:pointer}
+
+    footer{padding:40px 0;color:var(--muted);border-top:1px solid var(--border);margin-top:20px}
   </style>
 </head>
 <body>
@@ -89,333 +92,49 @@
     <div class="container">
       <nav>
         <div class="brand">Prasham Shah</div>
-        <div class="links">
+        <div class="navlinks">
           <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#case-studies">Case Studies</a>
-          <a href="#pm">Project Management</a>
-          <a href="#experience">Experience</a>
           <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#pm">Project Management</a>
+          <a href="#case-studies">Case Studies</a>
           <a href="#contact">Contact</a>
         </div>
-        <div class="theme-toggle">
-          <label for="themeToggle" class="muted">Light/Dark</label>
-          <input id="themeToggle" class="toggle" type="checkbox" />
+        <div class="cta">
+          <a class="btn" href="Prasham%20Shah%20Resume%20.pdf" download>Resume</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main class="container">
+    <!-- About + Fast Facts side by side -->
     <section class="hero">
       <div>
-        <span class="pill">Data • Analytics • ML</span>
-        <h1>Turning data into clear, actionable insights</h1>
-        <p>MS in Information Systems at University of Maryland. I build dashboards, predictive models, and data apps that drive business decisions.</p>
+        <span class="eyebrow">Data • Analytics • Machine Learning</span>
+        <h1>Data scientist and analyst focused on measurable business impact</h1>
+        <p>I turn raw data into decisions. I build clean pipelines, intuitive dashboards, and reliable ML models that leaders trust.</p>
         <div class="row">
           <a class="btn primary" href="https://github.com/prasham2712" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="mailto:shahprasham2727@gmail.com">Email</a>
-          <a class="btn" href="#projects">See projects</a>
-          <a class="btn" href="Prasham%20Shah%20Resume%20.pdf" download>Download Resume</a>
           <a class="btn" href="https://www.linkedin.com/in/prasham-shah-27122712271227122712/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-        <p class="muted">Based in the US • Open to Data Analyst / Data Scientist roles.</p>
       </div>
       <div class="card">
-        <h2>Fast facts</h2>
-        <div class="kv">
-          <div>Current focus</div><div>Credit risk modeling, KPI automation, A/B testing</div>
-          <div>Core tools</div><div>Python, SQL, scikit‑learn, Tableau, Power BI, Excel</div>
-          <div>Big data</div><div>Spark, Hadoop, Databricks</div>
-          <div>Cloud</div><div>AWS, GCP, Azure</div>
+        <h2>Highlights</h2>
+        <div class="metrics">
+          <div class="metric"><div class="num">1M+ / mo</div><div class="cap">records automated via SQL/Python pipelines</div></div>
+          <div class="metric"><div class="num">20% ↓</div><div class="cap">manual reporting time after KPI dashboards</div></div>
+          <div class="metric"><div class="num">15% ↓</div><div class="cap">reporting errors from process automation</div></div>
+          <div class="metric"><div class="num">Employee of the Year</div><div class="cap">UMD Recwell — leadership & performance</div></div>
+          <div class="metric"><div class="num">Tools</div><div class="cap">Python, SQL, Power BI, Tableau, Excel</div></div>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <div class="card">
-        <p>I translate messy data into reliable insights and products. I combine statistical rigor with clear storytelling to influence product, finance, and operations. Awarded Employee of the Year at UMD Recwell and promoted to Weight/Fitness Supervisor.</p>
-        <div class="chips">
-          <span class="chip">MSIS @ UMD (2024–2025)</span>
-          <span class="chip">Employee of the Year 2024–2025</span>
-          <span class="chip">Leadership & team ops</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Programming & Visualization</h3>
-          <p class="muted">Python, SQL, R, Streamlit, Plotly, Tableau, Power BI, Excel (Pivots, Power Query, Power Pivot, Macros)</p>
-          <div class="chips"><span class="chip">A/B testing</span><span class="chip">Forecasting</span><span class="chip">Storytelling</span></div>
-        </div>
-        <div class="card">
-          <h3>Analytics & Business</h3>
-          <p class="muted">Financial/Data modeling, KPI reporting, Risk analysis, Cost optimization, Forecasting, US GAAP, BI</p>
-          <div class="chips"><span class="chip">Experiment design</span><span class="chip">KPI automation</span></div>
-        </div>
-        <div class="card">
-          <h3>Databases & Platforms</h3>
-          <p class="muted">MySQL, MongoDB, Hive, Hadoop, Spark, Databricks, Git/GitHub, SAP (ERP Reporting), AWS, GCP, Azure</p>
-          <div class="chips"><span class="chip">Pipelines</span><span class="chip">Governance</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="filterbar">
-        <button class="active" data-filter="all">All</button>
-        <button data-filter="ml">ML</button>
-        <button data-filter="bi">BI</button>
-        <button data-filter="app">Apps</button>
-      </div>
-
-      <div class="grid cols-2" id="projectGrid">
-        <!-- Hotel Booking Cancellations -->
-        <a class="card project project-link" href="HotelBookingCancellationAnalysis.pdf" target="_blank" rel="noopener" data-tags="ml">
-          <img src="https://images.unsplash.com/photo-1501117716987-c8e29a5b2e5c?q=80&w=1200&auto=format&fit=crop" alt="Hotel Booking Cancellations" />
-          <div class="meta">
-            <h3>Predicting Hotel Booking Cancellations</h3>
-            <p>Classification models to predict cancellations; key drivers include lead time, deposit type, and customer segment.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">scikit‑learn</span><span class="tag">Random Forest</span><span class="tag">XGBoost</span></div>
-            <div class="row">
-              <a class="btn" href="HotelBookingCancellationAnalysisPresentation.pdf" target="_blank" rel="noopener">Slides</a>
-              <a class="btn" href="HotelBookingCancellationAnalysis.ipynb" target="_blank" rel="noopener">Notebook</a>
-            </div>
-          </div>
-        </a>
-
-        <!-- Mission 410 / Fandango Ratings -->
-        <a class="card project project-link" href="Mission410Solutions.Rmd" target="_blank" rel="noopener" data-tags="ml bi">
-          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1200&auto=format&fit=crop" alt="Movie Ratings" />
-          <div class="meta">
-            <h3>Movie Ratings Analysis (Fandango)</h3>
-            <p>Explored platform rating biases and distribution shifts using Fandango datasets; reproducible R analysis.</p>
-            <div class="tags"><span class="tag">R</span><span class="tag">tidyverse</span><span class="tag">EDA</span></div>
-            <div class="row">
-              <a class="btn" href="fandango_score_comparison.csv" target="_blank" rel="noopener">Dataset</a>
-              <a class="btn" href="fandango_scrape.csv" target="_blank" rel="noopener">Scrape</a>
-            </div>
-          </div>
-        </a>
-
-        <!-- UMD Soccer Database -->
-        <a class="card project project-link" href="UMDSoccer.pdf" target="_blank" rel="noopener" data-tags="bi app">
-          <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=1200&auto=format&fit=crop" alt="UMD Soccer DB" />
-          <div class="meta">
-            <h3>UMD Soccer — SQL Database & Analytics</h3>
-            <p>Designed schema and analytics for men's soccer program; queries for player stats, matches, and outcomes.</p>
-            <div class="tags"><span class="tag">SQL</span><span class="tag">Schema Design</span><span class="tag">Analytics</span></div>
-            <div class="row">
-              <a class="btn" href="Create.sql" target="_blank" rel="noopener">Schema</a>
-              <a class="btn" href="Insert.sql" target="_blank" rel="noopener">Inserts</a>
-              <a class="btn" href="Select.sql" target="_blank" rel="noopener">Queries</a>
-              <a class="btn" href="View.sql" target="_blank" rel="noopener">Views</a>
-            </div>
-          </div>
-        </a>
-
-        <!-- Air Quality Forecasting -->
-        <a class="card project project-link" href="Air_Quality_Forecasting.pdf" target="_blank" rel="noopener" data-tags="ml">
-          <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop" alt="Air Quality" />
-          <div class="meta">
-            <h3>Air Quality Forecasting</h3>
-            <p>Regression models to predict AQI; Random Forest achieved strong fit with robust feature engineering.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Regression</span></div>
-            <div class="row">
-              <a class="btn" href="Air_Quality_Forecasting.ipynb" target="_blank" rel="noopener">Notebook</a>
-              <a class="btn" href="AQI-and-Lat-Long-of-Countries.csv" target="_blank" rel="noopener">Data</a>
-            </div>
-          </div>
-        </a>
-
-        <!-- E‑commerce Analytics (Python + SQL) -->
-        <a class="card project project-link" href="python+sql_ecommerce.ipynb" target="_blank" rel="noopener" data-tags="bi app">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop" alt="E‑commerce Analytics" />
-          <div class="meta">
-            <h3>E‑commerce Analytics</h3>
-            <p>End‑to‑end CSV→SQL pipeline with KPIs, retention, YOY growth, and advanced window functions.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Pandas</span></div>
-            <div class="row">
-              <a class="btn" href="csv_to_sql.py" target="_blank" rel="noopener">Ingestion</a>
-              <a class="btn" href="Questions.txt" target="_blank" rel="noopener">Query list</a>
-            </div>
-          </div>
-        </a>
-
-        <!-- Big Data & Cloud Coursework (composite) -->
-        <a class="card project project-link" href="Shah_Prasham_BUDT%20Individual_Project_3_Hive.pdf" target="_blank" rel="noopener" data-tags="app bi">
-          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Big Data Labs" />
-          <div class="meta">
-            <h3>Big Data & Cloud Labs</h3>
-            <p>Hands‑on labs with Pig, Hive, and Spark SQL on retail/logistics datasets; ETL, aggregations, and joins at scale.</p>
-            <div class="tags"><span class="tag">Pig</span><span class="tag">Hive</span><span class="tag">Spark SQL</span></div>
-            <div class="row">
-              <a class="btn" href="Shah_Prasham_BUDT%20Individual_Project_3_Pig.pdf" target="_blank" rel="noopener">Pig</a>
-              <a class="btn" href="Shah_Prasham_BUDT%20Individual_Project_3_Hive.pdf" target="_blank" rel="noopener">Hive</a>
-            </div>
-          </div>
-        </a>
-
-        <!-- Predictive Maintenance -->
-        <a class="card project project-link" href="SectionC_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
-          <img src="https://images.unsplash.com/photo-1551281044-8d8d0d8b7ae5?q=80&w=1200&auto=format&fit=crop" alt="Predictive Maintenance" />
-          <div class="meta">
-            <h3>Predictive Maintenance</h3>
-            <p>Sensor‑driven failure prediction with logistic regression, decision trees, and random forest.</p>
-            <div class="tags"><span class="tag">PySpark</span><span class="tag">ML</span><span class="tag">Feature Eng.</span></div>
-          </div>
-        </a>
-
-        <!-- Employee Promotion Prediction -->
-        <a class="card project project-link" href="SectionB_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
-          <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?q=80&w=1200&auto=format&fit=crop" alt="Employee Promotion" />
-          <div class="meta">
-            <h3>Employee Promotion Prediction</h3>
-            <p>Predictive modeling on HR data to identify promotion candidates; interpretable features and metrics.</p>
-            <div class="tags"><span class="tag">Classification</span><span class="tag">LogReg</span><span class="tag">Tree‑based</span></div>
-          </div>
-        </a>
-
-        <!-- Car Price Prediction -->
-        <a class="card project project-link" href="SectionA_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
-          <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200&auto=format&fit=crop" alt="Car Price" />
-          <div class="meta">
-            <h3>Car Price Prediction</h3>
-            <p>Linear regression with robust preprocessing (encoding, scaling) to estimate used‑car prices.</p>
-            <div class="tags"><span class="tag">Regression</span><span class="tag">Feature Eng.</span><span class="tag">Model Eval</span></div>
-          </div>
-        </a>
-
-        <!-- MongoDB + Neo4j eCommerce -->
-        <a class="card project project-link" href="sectiona&b.pdf" target="_blank" rel="noopener" data-tags="app bi">
-          <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?q=80&w=1200&auto=format&fit=crop" alt="MongoDB + Neo4j" />
-          <div class="meta">
-            <h3>eCommerce with MongoDB & Neo4j</h3>
-            <p>Document + graph data models for orders, products, and relationships; complex filters and Cypher patterns.</p>
-            <div class="tags"><span class="tag">MongoDB</span><span class="tag">Neo4j</span><span class="tag">NoSQL</span></div>
-            <div class="row">
-              <a class="btn" href="section-c.ipynb.pdf" target="_blank" rel="noopener">MongoDB</a>
-              <a class="btn" href="section-d.ipynb.pdf" target="_blank" rel="noopener">Neo4j</a>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="case-studies">
-      <h2>Case Studies</h2>
-      <div class="grid cols-2">
-        <!-- Use one consistent thumbnail for all case cards -->
-        <!-- Mastercard -->
-        <a class="card project project-link" href="Mastercard%20Case%20Study.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Case study" />
-          <div class="meta">
-            <h3>Mastercard – Ethical AI Governance</h3>
-            <p>How governance frameworks enable responsible innovation and consumer trust across AI initiatives.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-        <!-- McCormick -->
-        <a class="card project project-link" href="McCormick_Case_Study.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Case study" />
-          <div class="meta">
-            <h3>McCormick & Co. – AI in Flavor Innovation</h3>
-            <p>Digitizing decades of flavor data and using AI to accelerate product development cycles.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-        <!-- Coda Coffee -->
-        <a class="card project project-link" href="Coda%20Coffee.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Case study" />
-          <div class="meta">
-            <h3>Coda Coffee – Blockchain Transparency</h3>
-            <p>Blockchain + IoT for traceability from bean to cup with instant payments to farmers.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-        <!-- RFID at METRO -->
-        <a class="card project project-link" href="RFID%20at%20the%20METRO%20Group.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Case study" />
-          <div class="meta">
-            <h3>RFID at METRO Group</h3>
-            <p>Evaluating pallet vs case‑level tagging: costs, benefits, and operational trade‑offs.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-        <!-- Kodak -->
-        <a class="card project project-link" href="Kodak%20Case%20Write-up.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Case study" />
-          <div class="meta">
-            <h3>Kodak and the Digital Revolution</h3>
-            <p>Lessons in disruption and strategy from Kodak’s late pivot to digital technologies.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-        <!-- eBay -->
-        <a class="card project project-link" href="ebay%20Case%20Study.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="Case study" />
-          <div class="meta">
-            <h3>eBay – Affiliate Networks</h3>
-            <p>Network effects, commission design, and the build vs buy decision for affiliate platforms.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="pm">
-      <h2>Project Management</h2>
-      <div class="grid cols-2">
-        <!-- Simulation Game -->
-        <a class="card project project-link" href="ProjectManagementGame_SimGuide.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="PM Simulation" />
-          <div class="meta">
-            <h3>Campus PM Simulation – 2nd Place</h3>
-            <p>10‑period resource and schedule trade‑offs; finished 2nd overall based on cost, time, and quality metrics.</p>
-            <div class="row"><span class="btn">Read Summary</span></div>
-          </div>
-        </a>
-        <!-- DeliveryCorps -->
-        <a class="card project project-link" href="annotated-Team3_DeliveryCorps%20AMP%20-3.pdf" target="_blank" rel="noopener">
-          <img src="https://images.unsplash.com/photo-1558459654-4698f7bcd1f4?q=80&w=1200&auto=format&fit=crop" alt="DeliveryCorps" />
-          <div class="meta">
-            <h3>DeliveryCorps Modernization Plan</h3>
-            <p>End‑to‑end plan across IT/data, DC siting, fleet upgrades, and market expansion with measurable KPIs.</p>
-            <div class="row"><span class="btn">Read Case</span></div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="resume-cards">
-        <div class="card resume-card">
-          <h3>Business Intelligence Analyst</h3>
-          <div class="where">I‑Infotechsys • Aug 2022 – Apr 2024</div>
-          <ul>
-            <li>Automated pipelines with SQL/Python for 1M+ records/month; reduced reporting errors by 15%.</li>
-            <li>Built KPI dashboards; cut manual reporting time by 20%.</li>
-            <li>Integrated SAP/ERP data to deliver real‑time insights.</li>
-          </ul>
-        </div>
-        <div class="card resume-card">
-          <h3>Data Scientist</h3>
-          <div class="where">BrainyBeam • May 2022 – Aug 2022</div>
-          <ul>
-            <li>Cleaned 50K+ records; improved downstream model performance.</li>
-            <li>Built prototypes for classification, clustering, and recommendations.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+    <!-- Education next -->
     <section id="education">
       <h2>Education</h2>
       <div class="grid cols-2">
@@ -430,6 +149,146 @@
       </div>
     </section>
 
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Programming & Visualization</h3>
+          <p class="muted">Python, SQL, R, Streamlit, Plotly, Tableau, Power BI, Excel (Pivots, Power Query, Power Pivot, Macros)</p>
+          <div class="chips"><span class="chip">A/B testing</span><span class="chip">Forecasting</span><span class="chip">Storytelling</span></div>
+        </div>
+        <div class="card">
+          <h3>Machine Learning & AI</h3>
+          <p class="muted">scikit‑learn, TensorFlow, PyTorch, XGBoost, LightGBM, Deep Learning (CNNs, LSTMs), Time‑Series Forecasting, NLP (Hugging Face, spaCy, BERT, GPT, LangChain, OpenAI API)</p>
+          <div class="chips"><span class="chip">Modeling</span><span class="chip">MLOps‑lite</span><span class="chip">NLP</span></div>
+        </div>
+        <div class="card">
+          <h3>Databases & Platforms</h3>
+          <p class="muted">MySQL, MongoDB, Hive, Hadoop, Spark, Databricks, Git/GitHub, SAP (ERP Reporting), AWS, GCP, Azure</p>
+          <div class="chips"><span class="chip">Pipelines</span><span class="chip">Governance</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience with expanded details and added Mobioxy -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Business Intelligence Analyst — I‑Infotechsys</h3>
+          <p class="muted">Aug 2022 – Apr 2024</p>
+          <ul>
+            <li>Automated pipelines with SQL/Python for 1M+ records/month; reduced reporting errors by 15%.</li>
+            <li>Built KPI dashboards in Tableau/Power BI; cut manual reporting time by 20% and improved decision cadence.</li>
+            <li>Integrated SAP/ERP data; delivered real‑time feeds for finance and operations leadership.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Data Scientist — BrainyBeam</h3>
+          <p class="muted">May 2022 – Aug 2022</p>
+          <ul>
+            <li>Cleaned 50K+ records; improved downstream model performance and reliability.</li>
+            <li>Prototyped classification, clustering, and recommendation systems for client PoCs.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Product Analytics Intern — Mobioxy</h3>
+          <p class="muted">Aug 2021 – Dec 2021 • Ahmedabad, India</p>
+          <ul>
+            <li>Investigated user behavior using SQL and Excel; identified 5 drop‑off points that informed UX redesign and increased feature engagement.</li>
+            <li>Ran visual EDA in R to evaluate gaming app trends and client feedback, supporting prioritization across two iterations.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects: text-only cards, links to repos/artifacts -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="filterbar">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="ml">ML</button>
+        <button data-filter="bi">BI</button>
+        <button data-filter="app">Apps</button>
+      </div>
+      <div class="list-cards" id="projectGrid">
+        <a class="tcard project" href="https://github.com/prasham2712/ResumeAI" target="_blank" rel="noopener" data-tags="app ml">
+          <h3>LLM‑Based Resume Analyzer</h3>
+          <p>GenAI app that parses resumes and matches to JDs; streamlined screening workflow.</p>
+        </a>
+        <a class="tcard project" href="https://github.com/prasham2712/Flight-Delay-Prediction-with-Real-Time-Weather-Data" target="_blank" rel="noopener" data-tags="app ml">
+          <h3>Flight Delay Prediction</h3>
+          <p>Streaming pipeline + ML models for delay risk using flight + weather data.</p>
+        </a>
+        <a class="tcard project" href="https://github.com/prasham2712/NYC_311_Complaint_Analyzer" target="_blank" rel="noopener" data-tags="bi app">
+          <h3>NYC 311 Complaint Analyzer</h3>
+          <p>Interactive analytics app with geospatial views and trend insights.</p>
+        </a>
+        <a class="tcard project" href="HotelBookingCancellationAnalysis.pdf" target="_blank" rel="noopener" data-tags="ml">
+          <h3>Predicting Hotel Booking Cancellations</h3>
+          <p>Classification models to flag likely cancellations; identified key drivers.</p>
+        </a>
+        <a class="tcard project" href="Air_Quality_Forecasting.pdf" target="_blank" rel="noopener" data-tags="ml">
+          <h3>Air Quality Forecasting</h3>
+          <p>Random‑forest regression to estimate AQI from country‑level features.</p>
+        </a>
+        <a class="tcard project" href="python+sql_ecommerce.ipynb" target="_blank" rel="noopener" data-tags="bi app">
+          <h3>E‑commerce Analytics (Python + SQL)</h3>
+          <p>CSV→SQL pipeline with retention, YOY growth, and window functions.</p>
+        </a>
+        <a class="tcard project" href="Shah_Prasham_BUDT%20Individual_Project_3_Hive.pdf" target="_blank" rel="noopener" data-tags="bi app">
+          <h3>Big Data & Cloud Labs</h3>
+          <p>Pig, Hive, and Spark SQL exercises on retail/logistics data.</p>
+        </a>
+        <a class="tcard project" href="SectionC_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
+          <h3>Predictive Maintenance</h3>
+          <p>Failure prediction from sensor data with tree‑based models.</p>
+        </a>
+        <a class="tcard project" href="SectionB_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
+          <h3>Employee Promotion Prediction</h3>
+          <p>HR analytics to identify promotion candidates; interpretable features.</p>
+        </a>
+        <a class="tcard project" href="SectionA_Shah_Prasham.pdf" target="_blank" rel="noopener" data-tags="ml">
+          <h3>Car Price Prediction</h3>
+          <p>Robust regression with preprocessing to estimate used‑car prices.</p>
+        </a>
+        <a class="tcard project" href="sectiona&b.pdf" target="_blank" rel="noopener" data-tags="bi app">
+          <h3>eCommerce with MongoDB & Neo4j</h3>
+          <p>Document + graph models for orders, products, and relationships.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Project Management: text-only cards -->
+    <section id="pm">
+      <h2>Project Management</h2>
+      <div class="list-cards">
+        <a class="tcard" href="ProjectManagementGame_SimGuide.pdf" target="_blank" rel="noopener">
+          <h3>Campus PM Simulation — 2nd Place</h3>
+          <p>10‑period resource and schedule trade‑offs; finished 2nd overall on cost, time, and quality.</p>
+        </a>
+        <a class="tcard" href="annotated-Team3_DeliveryCorps%20AMP%20-3.pdf" target="_blank" rel="noopener">
+          <h3>DeliveryCorps Modernization Plan</h3>
+          <p>End‑to‑end plan across IT/data, DC siting, fleet upgrades, and market expansion with KPIs.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Case Studies: titles only -->
+    <section id="case-studies">
+      <h2>Case Studies</h2>
+      <div class="list-cards">
+        <a class="tcard" href="Mastercard%20Case%20Study.pdf" target="_blank" rel="noopener"><h3>Mastercard — Ethical AI Governance</h3><p>Governance frameworks enabling responsible innovation and trust.</p></a>
+        <a class="tcard" href="McCormick_Case_Study.pdf" target="_blank" rel="noopener"><h3>McCormick & Co. — AI in Flavor Innovation</h3><p>Digitizing flavor data and accelerating product development with AI.</p></a>
+        <a class="tcard" href="Coda%20Coffee.pdf" target="_blank" rel="noopener"><h3>Coda Coffee — Blockchain Transparency</h3><p>Traceability from bean to cup using blockchain + IoT.</p></a>
+        <a class="tcard" href="RFID%20at%20the%20METRO%20Group.pdf" target="_blank" rel="noopener"><h3>RFID at METRO Group</h3><p>Costs, benefits, and operations of pallet vs case‑level tagging.</p></a>
+        <a class="tcard" href="Kodak%20Case%20Write-up.pdf" target="_blank" rel="noopener"><h3>Kodak and the Digital Revolution</h3><p>Strategy lessons from a late pivot to digital.</p></a>
+        <a class="tcard" href="ebay%20Case%20Study.pdf" target="_blank" rel="noopener"><h3>eBay — Affiliate Networks</h3><p>Network effects and build‑vs‑buy for affiliate platforms.</p></a>
+      </div>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
@@ -448,17 +307,7 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme toggle with localStorage
-    const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme');
-    if(saved === 'dark'){root.setAttribute('data-theme','dark'); toggle.checked = true}
-    toggle.addEventListener('change',()=>{
-      if(toggle.checked){root.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark')}
-      else{root.removeAttribute('data-theme'); localStorage.setItem('theme','light')}
-    });
-
-    // Project filtering
+    // Simple filter for project tags
     const buttons = document.querySelectorAll('.filterbar button');
     const cards = document.querySelectorAll('#projectGrid .project');
     buttons.forEach(btn=>{
@@ -468,7 +317,7 @@
         const f = btn.dataset.filter;
         cards.forEach(c=>{
           const tags = c.dataset.tags || '';
-          c.style.display = (f==='all' || tags.includes(f)) ? 'flex' : 'none';
+          c.style.display = (f==='all' || tags.includes(f)) ? 'block' : 'none';
         })
       })
     })
