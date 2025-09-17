@@ -65,16 +65,25 @@
     
     .menu-toggle {
       display: none;
-      position: relative;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
       width: 40px; height: 40px;
       border: 1px solid var(--border);
       border-radius: 10px;
       background: #fff;
       box-shadow: var(--shadow);
-      align-items: center; justify-content: center;
-      gap: 4px; cursor: pointer;
+      cursor: pointer;
+      gap: 5px; 
     }
-    .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--fg); }
+    
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--fg);
+      border-radius: 2px;
+    }
     
     @media (max-width: 900px) {
       .menu-toggle { display: inline-flex; order: 0; }
