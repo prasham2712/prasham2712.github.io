@@ -61,28 +61,83 @@
     .filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 6px}
     .filterbar button{padding:6px 10px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg);cursor:pointer}
     .filterbar button.active{background:var(--accent);border-color:transparent;color:#fff}
+    nav { position: relative; }
+    
+    .menu-toggle {
+      display: none;
+      position: relative;
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      align-items: center; justify-content: center;
+      gap: 4px; cursor: pointer;
+    }
+    .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--fg); }
+    
+    @media (max-width: 900px) {
+      .menu-toggle { display: inline-flex; order: 0; }
+      .brand { order: 1; font-size: 18px; }
+      .cta { display: none; } 
+    
+      .navlinks {
+        position: absolute;
+        left: 0; right: 0; top: 60px;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: var(--shadow);
+      }
+      .navlinks a { padding: 10px 12px; border-radius: 8px; }
+      .navlinks a:hover { background: var(--chip); }
+    
+      .navlinks.open { display: flex; }
+      .resume-mobile { display: inline-block; }
+    
+      nav { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; }
+    }
+    
+    @media (min-width: 901px) {
+      nav { display: flex; align-items: center; justify-content: space-between; }
+      .resume-mobile { display: none; }
+    }
+    section { scroll-margin-top: 80px; }
+
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
-      <nav>
-        <div class="brand">Prasham Shah</div>
-        <div class="navlinks">
-          <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#pm">Project Management</a>
-          <a href="#case-studies">Case Studies</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="cta">
-          <a class="btn" href="Prasham%20Shah%20Resume.pdf" download>Resume</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <div class="container">
+    <nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="brand">Prasham Shah</div>
+
+      <div class="navlinks" id="siteNav">
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#pm">Project Management</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#contact">Contact</a>
+        <a class="btn resume-mobile" href="Prasham%20Shah%20Resume.pdf" download>Resume</a>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="Prasham%20Shah%20Resume.pdf" download>Resume</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
 
   <main class="container">
     <section class="hero" id="about">
@@ -308,21 +363,42 @@
   </main>
 
   <script>
-    document.addEventListener('DOMContentLoaded',function(){
-      const buttons=document.querySelectorAll('.filterbar button');
-      const cards=document.querySelectorAll('#projectGrid .project');
-      buttons.forEach(btn=>{
-        btn.addEventListener('click',()=>{
-          buttons.forEach(b=>b.classList.remove('active'));
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.filterbar button');
+      const cards = document.querySelectorAll('#projectGrid .project');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          const f=btn.dataset.filter;
-          cards.forEach(c=>{
-            const tags=c.dataset.tags||'';
-            c.style.display=(f==='all'||tags.includes(f))?'block':'none';
+          const f = btn.dataset.filter;
+          cards.forEach(c => {
+            const tags = c.dataset.tags || '';
+            c.style.display = (f === 'all' || tags.includes(f)) ? 'block' : 'none';
           });
         });
       });
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('siteNav');
+  
+      function closeMenu() {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+  
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+  
+      nav.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', closeMenu);
+      });
+  
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+      });
     });
+
   </script>
 </body>
 </html>
